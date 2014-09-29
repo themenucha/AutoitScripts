@@ -1,0 +1,146 @@
+#Include <Array.au3>
+$NumOfEntries = 30
+$error22 = "RealPlayer has encountered"
+$error21 = "RealPlayer was not shut"
+$error20 = "Install Chrome"
+$error19 = "To help protect"
+$error18 = "Internet Explorer"
+$error16 = "Unable to launch"
+$error15 = "Setup needs"
+$error14 = "ADOBE"
+$error13 = "Macros are disabled because the security "
+$error12 = "The application was unable to start"
+$error11 = "Cyvera.Exploit.Tester has encountered"
+$error10 = "This document contains macros"
+$error9 = "This workbook contains links"
+$error8 =  "Outlook failed to start"
+$error7 = "Your computer must be restarted"
+$error6 = "VLC media player has already been"
+$error5 = "Microsoft Office Excel has encountered a problem "
+$error4 = "The file is corrupt and cannot be opened."
+$error3 = "Would you like to continue opening it?"
+$error2 = "You may continue opening it or perform data recovery"
+$error1 = "Word failed to start correctly last time"
+$wordTitle = "Microsoft Office Word"
+$wordTitle2 = "WINWORD.EXE"
+$excelTitle3 = "EXCEL.EXE"
+$excelTitle2 = "Microsoft Excel"
+$excelTitle = "Microsoft Office Excel"
+$VLCTitle = "VLC media player"
+$setupTitle = "Setup"
+$outlookTilte = "Microsoft office outlook"
+$cyvera = "Cyvera.Exploit.Tester"
+$AdobeRtitle = "Adobe Reader - License Agreement"
+$AdobeRsetup = "setup"
+$JavaError = "Aplication Error"
+$Traps = "Traps"
+$Iexplorer = "Internet Explorer"
+$DEP = "Data Execution Prevention"
+$Shockvawe = "Installing Adobe"
+$RealPlayer = "Abnormal Shutdown"
+$JavaErr = "Application Error"
+$RealPlayer2 = "RealPlayer"
+$QuickTimePlayer = "QuickTimePlayer"
+Local $windowDictionary = ObjCreate("Scripting.Dictionary") 
+Local $window1[4] = [$wordTitle, $error1, "Button1", "!n"] 
+Local $window2[4] = [$wordTitle, $error2, "Button1", "!o"] 
+Local $window3[4] = [$wordTitle, $error3, "Button1", "!y"] 
+Local $window4[4] = [$excelTitle2, $error4, "Button1", "{ENTER}"] 
+Local $window5[4] = [$excelTitle, $error2, "Button1", "!0"] 
+Local $window6[4] = [$excelTitle, $error3, "Button1", "!y"] 
+Local $window7[4] = [$excelTitle, $error5, "Button1", "!d"] 
+Local $window8[4] = ["Default Browser", "", "", "{ENTER}"]
+Local $window9[4] = [$VLCTitle,$error6, "Button1", "!n"]
+Local $window10[4] = [$setupTitle,$error7, "Button1", "!n"]
+Local $window11[4] = [$outlookTilte,$error8, "Button1", "!n"]
+Local $window12[4] = [$excelTitle2,$error9, "Button1", "!n"]
+Local $window13[4] = [$wordTitle,$error10, "Button1", "!c"]
+Local $window14[4] = [$cyvera,$error11, "Button1", "!n"]
+Local $window15[4] = [$wordTitle2,$error12, "Button1", "{ENTER}"]
+Local $window16[4] = [$excelTitle2,$error13, "Button1", "{ENTER}"]
+Local $window17[4] = [$excelTitle3,$error12, "Button1", "{ENTER}"]
+Local $window18[4] = [$AdobeRtitle,$error14, "Button2", "{ENTER}"]
+Local $window19[4] = [$AdobeRsetup,$error15, "Button1", "{ENTER}"]
+Local $window20[4] = [$JavaError,$error16, "Button1", "{ENTER}"]
+Local $window21[4] = [$Traps,"", "Button1", "{TAB}"]
+Local $window22[4] = [$Iexplorer,$error18, "Button1", "{ENTER}"]
+Local $window23[4] = [$Traps,"", "Button1", "{ENTER}"]
+Local $window24[4] = [$DEP,$error19, "Button1", "{ENTER}"]
+Local $window25[4] = [$Shockvawe,$error20, "Button5", "{ENTER}"]
+Local $window26[4] = [$RealPlayer,$error21, "Button3", "{ENTER}"]
+Local $window27[4] = [$RealPlayer,$error21, "Button1",  "!c"]
+Local $window28[4] = [$JavaErr,"", "Button1", "{ENTER}"]
+Local $window29[4] = [$RealPlayer2,$error22, "Button1", "{ENTER}"]
+Local $window30[4] = [$QuickTimePlayer,"", "Button1", "{ENTER}"]
+
+$windowDictionary(1) = $window1
+$windowDictionary(2) = $window2
+$windowDictionary(3) = $window3
+$windowDictionary(4) = $window4
+$windowDictionary(5) = $window5
+$windowDictionary(6) = $window6
+$windowDictionary(7) = $window7
+$windowDictionary(8) = $window8
+$windowDictionary(9) = $window9
+$windowDictionary(10) = $window10
+$windowDictionary(11) = $window11
+$windowDictionary(12) = $window12
+$windowDictionary(13) = $window13
+$windowDictionary(14) = $window14
+$windowDictionary(15) = $window15
+$windowDictionary(16) = $window16
+$windowDictionary(17) = $window17
+$windowDictionary(18) = $window18
+$windowDictionary(19) = $window19
+$windowDictionary(20) = $window20
+$windowDictionary(21) = $window21
+$windowDictionary(22) = $window22
+$windowDictionary(23) = $window23
+$windowDictionary(24) = $window24
+$windowDictionary(25) = $window25
+$windowDictionary(26) = $window26
+$windowDictionary(27) = $window27
+$windowDictionary(28) = $window28
+$windowDictionary(29) = $window29
+$windowDictionary(30) = $window30
+$loopStop=False
+$usedWindow = false
+
+While True
+	
+   For $i = 1 To $NumOfEntries
+	  $array = $windowDictionary($i)
+	  $result = WinActivate($array[0], $array[1])
+	
+	  if $result <> 0 Then
+		 $usedWindow = True
+		 ControlSend($array[0], $array[1], $array[2], $array[3])
+	  EndIf
+   Next
+	Sleep (1000)
+   If $usedWindow = False Then
+	  
+	  $result = WinActivate("Import Wizard")
+	  $lastWindow = False
+	  if $result <> 0 Then
+		 $lastWindow = True
+		 ControlSend("Import Wizard", "", "", "{DOWN}")
+		 ControlSend("Import Wizard", "", "", "{ENTER}")
+	  Else
+		 $result = WinActivate("Firefox Safe Mode")
+		 
+		 if $result <> 0 Then
+			$lastWindow = True
+			ControlSend("Firefox Safe Mode", "", "", "{RIGHT}")
+			ControlSend("Firefox Safe Mode", "", "", "{ENTER}")
+		 EndIf
+	  EndIf
+		Sleep (3000)
+	  If $lastWindow = False Then
+		 $loopStop = True
+	  EndIf
+	
+   Else
+		 $usedWindow = False
+   EndIf
+WEnd
